@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:imdb/widget.dart';
 import 'List.dart';
+import 'about.dart';
 
 double calculateWidthBlackCon(int index) {
   if (index % 2 == 0) {
@@ -33,9 +36,57 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text(
           "Top Ten Tv Show 2021 ",
           style: TextStyle(
-              color: Colors.amber, fontSize: 30, fontWeight: FontWeight.bold),
+              color: Colors.amber, fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        centerTitle: true,
+        actions: [
+          DropdownButton(
+            dropdownColor: Colors.black87,
+            iconSize: 35,
+            icon: Icon(Icons.more_vert),
+            items: [
+              DropdownMenuItem(
+                value: 1,
+                child: Text("Share",style: TextStyle(color: Colors.white70),),
+              ),
+              DropdownMenuItem(
+                value: 2,
+                child: Text("About",style: TextStyle(color: Colors.white70),),
+              ),
+              DropdownMenuItem(
+                value: 3,
+                child: Text("Exit",style: TextStyle(color: Colors.white70),),
+              )
+            ],
+            onChanged: (value) {
+              setState(() {
+                if (value == 1) {
+                } else if (value == 2) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsPage(),));
+                } else if (value == 3) {
+                  AlertDialog(
+                    title: Text("Do  you want to exit?"),
+                    actions: [
+                      MaterialButton(
+                        color: Colors.red,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text("No"),
+                      ),
+                      MaterialButton(
+                        color: Colors.blue,
+                        onPressed: () {
+                          exit(0);
+                        },
+                        child: Text("Yes"),
+                      )
+                    ],
+                  );
+                }
+              });
+            },
+          ),
+        ],
       ),
 
       ///Main column

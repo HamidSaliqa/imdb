@@ -181,7 +181,7 @@ class ConForDescription extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(
-                width:200,
+                width:300,
                 child: Divider(color: Colors.amberAccent[100],),
               ),
               Text(
@@ -189,9 +189,10 @@ class ConForDescription extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(
-                width:200,
-                child: Divider(color: Colors.amberAccent[100],),
+                width:300,
+                child: Divider(color: Colors.amberAccent,),
               ),
+
             ],
           ),
         ),

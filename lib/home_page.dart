@@ -63,25 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 } else if (value == 2) {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsPage(),));
                 } else if (value == 3) {
-                  AlertDialog(
-                    title: Text("Do  you want to exit?"),
-                    actions: [
-                      MaterialButton(
-                        color: Colors.red,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text("No"),
-                      ),
-                      MaterialButton(
-                        color: Colors.blue,
-                        onPressed: () {
-                          exit(0);
-                        },
-                        child: Text("Yes"),
-                      )
-                    ],
-                  );
+                  exit(0);
                 }
               });
             },

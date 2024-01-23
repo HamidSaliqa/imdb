@@ -38,12 +38,15 @@ class _MyRowState extends State<MyRow> {
           width: widget.widthBlackCon,
           child: Row(
             children: [
-              Text(
-                widget.numberOfRow,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontFamily: "LondrinaOutline"),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  widget.numberOfRow,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontFamily:"Courgette"),
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -70,7 +73,7 @@ class _MyRowState extends State<MyRow> {
                     style: TextStyle(
                         color: Colors.amberAccent,
                         fontSize: 20,
-                        fontFamily: "LondrinaOutline"),
+                        fontFamily: "Courgette"),
                   )),
             ],
           ),
@@ -147,23 +150,41 @@ class ImageCON extends StatelessWidget {
 ///ConForDescription
 class ConForDescription extends StatelessWidget {
   final String name;
+  final String stars;
+  final String summary;
+  final String creator;
+  final Map genres;
 
-  ConForDescription({required this.name});
+  ConForDescription({
+    required this.name,
+    required this.stars,
+    required this.summary,
+    required this.creator,
+    required this.genres,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width:10,),
-            CustomOutlinedButton(text: "Action"),
-            SizedBox(width:10,),
-            CustomOutlinedButton(text: "Comedy"),
-            SizedBox(width:10,),
-            CustomOutlinedButton(text: "Drama"),
+            SizedBox(
+              width: 10,
+            ),
+            CustomOutlinedButton(text:genres[name]?[0]),
+            SizedBox(
+              width: 10,
+            ),
+            CustomOutlinedButton(text:genres[name]?[1]),
+            SizedBox(
+              width: 10,
+            ),
+            CustomOutlinedButton(text:genres[name]?[2]),
           ],
         ),
         Container(
@@ -172,27 +193,48 @@ class ConForDescription extends StatelessWidget {
           height: 200,
           margin: EdgeInsets.only(top: 30),
           decoration: BoxDecoration(
-            color: Color.fromRGBO(31, 31, 31, 0.8),
+            color: Color.fromRGBO(31, 31, 31, 0.33725490196078434),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-               "Creator",
-                style: TextStyle(color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Creator: $creator",
+                  style: TextStyle(color: Colors.white,fontSize: 20),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 1,
+                color: Colors.amberAccent,
               ),
               SizedBox(
-                width:300,
-                child: Divider(color: Colors.amberAccent[100],),
+                height: 20,
               ),
-              Text(
-                "Stars",
-                style: TextStyle(color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Stars: $stars",
+                  style: TextStyle(color: Colors.white,fontSize: 20),
+                ),
+              ),
+              Container(
+                width:double.infinity,
+                height: 1,
+                color: Colors.amberAccent,
               ),
               SizedBox(
-                width:300,
-                child: Divider(color: Colors.amberAccent,),
+                height: 20,
               ),
-
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Text(
+                  "Summary: $summary",
+                  style: TextStyle(color: Colors.white,fontSize: 16),
+                ),
+              ),
             ],
           ),
         ),
@@ -207,7 +249,7 @@ Widget CustomOutlinedButton({required String text}) {
     onPressed: () {},
     child: Text(
       text,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),
     ),
     style: ButtonStyle(
         shape: MaterialStatePropertyAll(
@@ -215,6 +257,8 @@ Widget CustomOutlinedButton({required String text}) {
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
         ),
-        side: MaterialStatePropertyAll(BorderSide(color: Colors.amberAccent))),
+        side: MaterialStatePropertyAll(BorderSide(color: Colors.amberAccent)),
+
+    ),
   );
 }

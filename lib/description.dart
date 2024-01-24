@@ -28,7 +28,7 @@ class Description extends StatelessWidget {
             style: TextStyle(color: Colors.amberAccent),
           ),
         ),
-        body: Column(
+        body: ListView(
           children: [
             ImageCON(imageUrl: forImageUrl),
             ConForDescription(

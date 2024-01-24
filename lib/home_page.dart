@@ -1,9 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:imdb/widget.dart';
 import 'List.dart';
 import 'about.dart';
+import 'dart:async';
+
 
 double calculateWidthBlackCon(int index) {
   if (index % 2 == 0) {
@@ -60,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onChanged: (value) {
               setState(() {
                 if (value == 1) {
+                share();
                 } else if (value == 2) {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUsPage(),));
                 } else if (value == 3) {
@@ -104,4 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+Future<void> share() async {
+  await FlutterShare.share(
+    title: "Share it"
+  );
 }
